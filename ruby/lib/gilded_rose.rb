@@ -11,15 +11,11 @@ class GildedRose
   end
 
   def quality_up_1(item)
-    if item.quality < 50
-      item.quality = item.quality + 1
-    end
+    item.quality = item.quality + 1 if item.quality < 50
   end
 
   def quality_down_1_except_sulfuras(item)
-    if item.name != SULFURAS
-      item.quality = item.quality - 1
-    end
+    item.quality = item.quality - 1 if item.name != SULFURAS
   end
 
   def update_quality
