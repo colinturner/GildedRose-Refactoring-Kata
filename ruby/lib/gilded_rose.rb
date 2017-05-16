@@ -1,7 +1,9 @@
 class GildedRose
 
+  attr_reader :items
+
   SULFURAS = "Sulfuras, Hand of Ragnaros"
-  AGED_BRIE = "Aged Brie"
+  BRIE = "Aged Brie"
   BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert"
 
   def initialize(items)
@@ -11,7 +13,7 @@ class GildedRose
   def update_quality
 
     @items.each do |item|
-      if item.name != AGED_BRIE and item.name != BACKSTAGE
+      if item.name != BRIE and item.name != BACKSTAGE
         if item.quality > 0
           if item.name != SULFURAS
             item.quality = item.quality - 1
@@ -40,7 +42,7 @@ class GildedRose
       end
 
       if item.sell_in < 0
-        if item.name != AGED_BRIE
+        if item.name != BRIE
           if item.name != BACKSTAGE
             if item.quality > 0
               if item.name != SULFURAS

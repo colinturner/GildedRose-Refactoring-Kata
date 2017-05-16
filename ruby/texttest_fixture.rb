@@ -1,6 +1,8 @@
 #!/usr/bin/ruby -w
 
-require File.join(File.dirname(__FILE__), 'gilded_rose')
+# require File.join(File.dirname(__FILE__), 'gilded_rose')
+require './lib/gilded_rose'
+require './lib/item'
 
 puts "OMGHAI!"
 items = [
@@ -16,7 +18,7 @@ items = [
   Item.new(name="Conjured Mana Cake", sell_in=3, quality=6), # <-- :O
 ]
 
-days = 2
+days = 20
 if ARGV.size > 0
   days = ARGV[0].to_i + 1
 end
