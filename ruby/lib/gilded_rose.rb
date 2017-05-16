@@ -16,14 +16,18 @@ class GildedRose
     end
   end
 
+  def quality_down_1_except_sulfuras(item)
+    if item.name != SULFURAS
+      item.quality = item.quality - 1
+    end
+  end
+
   def update_quality
 
     @items.each do |item|
       if item.name != BRIE and item.name != BACKSTAGE
         if item.quality > 0
-          if item.name != SULFURAS
-            item.quality = item.quality - 1
-          end
+          quality_down_1_except_sulfuras(item)
         end
       else
         if item.quality < 50
@@ -47,9 +51,7 @@ class GildedRose
         if item.name != BRIE
           if item.name != BACKSTAGE
             if item.quality > 0
-              if item.name != SULFURAS
-                item.quality = item.quality - 1
-              end
+              quality_down_1_except_sulfuras(item)
             end
           else
             item.quality = item.quality - item.quality
