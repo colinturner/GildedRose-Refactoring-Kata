@@ -10,6 +10,12 @@ class GildedRose
     @items = items
   end
 
+  def quality_up_1(item)
+    if item.quality < 50
+      item.quality = item.quality + 1
+    end
+  end
+
   def update_quality
 
     @items.each do |item|
@@ -24,14 +30,10 @@ class GildedRose
           item.quality = item.quality + 1
           if item.name == BACKSTAGE
             if item.sell_in < 11
-              if item.quality < 50
-                item.quality = item.quality + 1
-              end
+              quality_up_1(item)
             end
             if item.sell_in < 6
-              if item.quality < 50
-                item.quality = item.quality + 1
-              end
+              quality_up_1(item)
             end
           end
         end
@@ -53,9 +55,7 @@ class GildedRose
             item.quality = item.quality - item.quality
           end
         else
-          if item.quality < 50
-            item.quality = item.quality + 1
-          end
+          quality_up_1(item)
         end
       end
 
