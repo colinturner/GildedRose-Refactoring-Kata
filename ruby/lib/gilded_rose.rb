@@ -22,6 +22,10 @@ class GildedRose
     quality_down_1_except_sulfuras(item) if item.quality > 0
   end
 
+  def quality_up_if_days_left_is(days, item)
+    quality_up_1(item) if item.sell_in < days
+  end
+
   def update_quality
 
     @items.each do |item|
@@ -31,12 +35,8 @@ class GildedRose
         if item.quality < 50
           item.quality = item.quality + 1
           if item.name == BACKSTAGE
-            if item.sell_in < 11
-              quality_up_1(item)
-            end
-            if item.sell_in < 6
-              quality_up_1(item)
-            end
+            quality_up_if_days_left_is(11, item)
+            quality_up_if_days_left_is(6, item)
           end
         end
       end
